@@ -1,0 +1,17 @@
+{
+  "name": "kafka-poc-js",
+  "version": "1.0.0",
+  "description": "POC - Kafka with Javascript",
+  "main": "index.js",
+  "repository": "git@github.com:yuhribernardes/kafka-poc-js.git",
+  "author": "Yuhri Bernardes <yuhri.graziano@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.2"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+  }
+}
