@@ -72,17 +72,18 @@ async function run() {
   await receiveMessages()
 }
 
-run()
+run().catch(e => console.error(`[example/consumer] ${e.message}`, e))
 
 const errorTypes = ['unhandledRejection', 'uncaughtException']
 const signalTraps = ['SIGTERM', 'SIGINT', 'SIGUSR2']
 
-errorTypes.map(type => {
+errorTypes.forEach(type => {
   process.on(type, async e => {
     try {
       console.log(`process.on ${type}`)
       console.error(e)
       await consumer.disconnect()
+      await producer.disconnect()
       process.exit(0)
     } catch (_) {
       process.exit(1)
@@ -90,10 +91,11 @@ errorTypes.map(type => {
   })
 })
 
-signalTraps.map(type => {
+signalTraps.forEach(type => {
   process.once(type, async () => {
     try {
       await consumer.disconnect()
+      await producer.disconnect()
     } finally {
       process.kill(process.pid, type)
     }
