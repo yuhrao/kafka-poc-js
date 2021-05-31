@@ -44,12 +44,12 @@ async function produceMessage() {
   console.log('Connecting producer')
   await producer.connect()
 
-  producer.send({
-    messages: [{ key: uuid(), value: 'My message from app' }],
-    topic: TOPIC_NAME
-  })
-
-  await producer.disconnect()
+  setInterval(() => {
+    producer.send({
+      messages: [{ key: uuid(), value: 'My message from app' }],
+      topic: TOPIC_NAME
+    })
+  }, 1000)
 }
 
 async function receiveMessages() {
