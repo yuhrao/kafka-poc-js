@@ -7,6 +7,7 @@
   "author": "Yuhri Bernardes <yuhri.graziano@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/kafkajs": "^1.9.0",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
@@ -20,5 +21,10 @@
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+  },
+  "dependencies": {
+    "kafkajs": "^1.15.0",
+    "uuidv4": "^6.2.8"
   }
 }
+
